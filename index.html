@@ -21,6 +21,9 @@
     </div>
     <div class="main">
         <div class="products">
+            <div v-for="i in items">
+                {{ i.title }}
+            </div>
             <button v-on:click="addItem">Add to cart</button>
         </div>
         <div class="cart">

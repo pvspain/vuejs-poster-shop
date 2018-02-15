@@ -6,9 +6,14 @@
 // - use CSS selector syntax to identify anchor point
 
 new Vue({
-  el: '#app',
+  el: "#app",
   data: {
-    total: 0
+    total: 0,
+    items: [
+      {"title": "alpha"},
+      {"title": "beta"},
+      {"title": "gamma"},
+    ]
   },
   methods: {
     "addItem": function () { 
