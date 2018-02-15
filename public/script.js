@@ -1,1 +1,6 @@
-console.log(Vue);
+// Create new Vue instance and anchor in DOM inside div ELement wih id 'app'  (index.html)
+// - use CSS selector syntax to identify anchor point
+
+new Vue({
+  el: '#app' 
+});
