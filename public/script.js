@@ -9,19 +9,43 @@ new Vue({
   el: "#app",
   data: {
     total: 0,
-    items: [
-      {"title": "alpha"},
-      {"title": "beta"},
-      {"title": "gamma"},
+    products: [{
+        id: 1,
+        title: "alpha"
+      },
+      {
+        id: 2,
+        title: "beta"
+      },
+      {
+        id: 3,
+        title: "gamma"
+      },
     ],
     cart: []
   },
   methods: {
-    "addItem": function (index) { 
-      console.log("addItem: " + index);
-      this.cart.push(this.items[index]);
-      console.log("cart size: " + this.cart.length);
+    addItem: function (index) {
+      // console.log("addItem: " + index);
       this.total += 9.99;
+      var product = this.products[index];
+      var found = false;
+      for (var i = 0; i < this.cart.length; i++) {
+        if (this.cart[i].id === product.id) {
+          this.cart[i].qty++;
+          found = true;
+        }
+      }
+      if (!found) {
+        this.cart.push({
+          id: product.id,
+          title: product.title,
+          qty: 1
+        });
+      }
+
+
+      // console.log("cart size: " + this.cart.length);
     }
-  } 
+  }
 });
