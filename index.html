@@ -21,10 +21,10 @@
     </div>
     <div class="main">
         <div class="products">
-            <div v-for="i in items">
-                {{ i.title }}
+            <div class="product" v-for="(item, index) in items">
+                <h4 class="product-title">{{ item.title }}</h4>
+                <button v-on:click="addItem(index)" class="add-to-cart">Add to cart</button>
             </div>
-            <button v-on:click="addItem">Add to cart</button>
         </div>
         <div class="cart">
             <h2>Shopping Cart</h2>
