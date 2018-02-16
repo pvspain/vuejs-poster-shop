@@ -2,6 +2,8 @@
 
 "use strict";
 
+var PRICE = 9.99;
+
 // Create new Vue instance and anchor in DOM inside div ELement wih id 'app'  (index.html)
 // - use CSS selector syntax to identify anchor point
 
@@ -27,7 +29,7 @@ new Vue({
   methods: {
     addItem: function (index) {
       // console.log("addItem: " + index);
-      this.total += 9.99;
+      this.total += PRICE;
       var product = this.products[index];
       var found = false;
       for (var i = 0; i < this.cart.length; i++) {
@@ -40,7 +42,8 @@ new Vue({
         this.cart.push({
           id: product.id,
           title: product.title,
-          qty: 1
+          qty: 1,
+          price: PRICE
         });
       }
 
