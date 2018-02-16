@@ -49,6 +49,16 @@ new Vue({
 
 
       // console.log("cart size: " + this.cart.length);
+    },
+    inc: function (item) {
+      item.qty++;
+      this.total += item.price;
+    },
+    dec: function (item) {
+      if (item.qty > 0) {
+        item.qty--;
+        this.total -= item.price;
+      }
     }
   },
   filters: {
