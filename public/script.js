@@ -50,5 +50,10 @@ new Vue({
 
       // console.log("cart size: " + this.cart.length);
     }
+  },
+  filters: {
+    currency: function (price) {
+      return "$".concat(price.toFixed(2))
+    }
   }
 });
