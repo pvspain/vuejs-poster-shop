@@ -36,6 +36,7 @@ new Vue({
         if (this.cart[i].id === product.id) {
           this.cart[i].qty++;
           found = true;
+          break;
         }
       }
       if (!found) {
