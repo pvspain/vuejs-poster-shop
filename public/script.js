@@ -22,13 +22,14 @@ new Vue({
       {
         id: 3,
         title: "gamma"
-      },
+      }
     ],
-    cart: []
+    cart: [],
+    search: ""
   },
   methods: {
       onSubmit: function () {
-        console.log("onSubmit");
+        console.log(this.search);
       },
       addItem: function (index) {
       // console.log("addItem: " + index);
