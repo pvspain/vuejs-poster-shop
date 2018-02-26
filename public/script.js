@@ -13,7 +13,7 @@ new Vue({
     total: 0,
     products: [],
     cart: [],
-    newSearchTerm: "",
+    newSearchTerm: "anime",
     previousSearchTerm: "",
     loading: false
   },
@@ -77,5 +77,8 @@ new Vue({
     currency: function (price) {
       return "$".concat(price.toFixed(2))
     }
+  },
+  mounted: function () {
+     this.onSubmit();
   }
 });
