@@ -14,17 +14,24 @@ new Vue({
     products: [],
     cart: [],
     newSearchTerm: "",
-    previousSearchTerm: ""
+    previousSearchTerm: "",
+    loading: false
   },
   methods: {
       onSubmit: function () {
-        console.log(this.newSearchTerm);
+        this.products = [];
+        this.loading = true;
         this.$http
             .get("/search/".concat(this.newSearchTerm))
-            .then(function (response) {
+            .then(
+                function (response) {
               this.previousSearchTerm = this.newSearchTerm;
-              this.products = response.data
-            })
+              this.products = response.data;
+              this.loading = false;
+            },
+                function (reason) {
+                    this.loading = false;
+                })
       },
       addItem: function (index) {
       // console.log("addItem: " + index);
