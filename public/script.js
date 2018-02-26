@@ -11,26 +11,18 @@ new Vue({
   el: "#app",
   data: {
     total: 0,
-    products: [{
-        id: 1,
-        title: "alpha"
-      },
-      {
-        id: 2,
-        title: "beta"
-      },
-      {
-        id: 3,
-        title: "gamma"
-      }
-    ],
+    products: [],
     cart: [],
     search: ""
   },
   methods: {
       onSubmit: function () {
         console.log(this.search);
-        console.log(this.$http);
+        this.$http
+            .get("/search/".concat(this.search))
+            .then(function (response) {
+              this.products = response.data
+            })
       },
       addItem: function (index) {
       // console.log("addItem: " + index);
