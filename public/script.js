@@ -3,6 +3,7 @@
 "use strict";
 
 var PRICE = 9.99;
+var LOAD_DELTA = 10;
 
 // Create new Vue instance and anchor in DOM inside div ELement wih id 'app'  (index.html)
 // - use CSS selector syntax to identify anchor point
@@ -13,12 +14,19 @@ new Vue({
     total: 0,
     products: [],
     cart: [],
+    results: [],
     newSearchTerm: "dropbear",
     previousSearchTerm: "",
     loading: false,
     price: PRICE
   },
   methods: {
+      appendProducts: function () {
+        if (this.products.length < this.results.length) {
+            var productsDelta = this.results.slice(this.products.length, this.products.length + LOAD_DELTA);
+            this.products = this.products.concat(productsDelta);
+        }
+      },
       onSubmit: function () {
         this.products = [];
         this.loading = true;
@@ -27,7 +35,8 @@ new Vue({
             .then(
                 function (response) {
               this.previousSearchTerm = this.newSearchTerm;
-              this.products = response.data;
+              this.results = response.data;
+              this.appendProducts();
               this.loading = false;
             },
                 function (reason) {
@@ -81,5 +90,11 @@ new Vue({
   },
   mounted: function () {
      this.onSubmit();
-  }
+     var vueInstance = this;
+     var watchedElem = document.getElementById("product-list-bottom")
+     var watcher = scrollMonitor.create(watchedElem);
+     watcher.enterViewport(function() {
+         vueInstance.appendProducts();
+      })  }
 });
+
