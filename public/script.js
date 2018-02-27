@@ -13,7 +13,7 @@ new Vue({
     total: 0,
     products: [],
     cart: [],
-    newSearchTerm: "anime",
+    newSearchTerm: "dropbear",
     previousSearchTerm: "",
     loading: false
   },
