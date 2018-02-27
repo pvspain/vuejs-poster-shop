@@ -15,7 +15,8 @@ new Vue({
     cart: [],
     newSearchTerm: "dropbear",
     previousSearchTerm: "",
-    loading: false
+    loading: false,
+    price: PRICE
   },
   methods: {
       onSubmit: function () {
