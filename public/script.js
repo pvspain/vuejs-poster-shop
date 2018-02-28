@@ -20,6 +20,11 @@ new Vue({
     loading: false,
     price: PRICE
   },
+  computed: {
+      noMoreProducts: function () {
+          return this.products.length === this.results.length && this.results.length > 0;
+      }
+  },
   methods: {
       appendProducts: function () {
         if (this.products.length < this.results.length) {
@@ -95,6 +100,7 @@ new Vue({
      var watcher = scrollMonitor.create(watchedElem);
      watcher.enterViewport(function() {
          vueInstance.appendProducts();
-      })  }
+      });
+  }
 });
 
